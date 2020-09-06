@@ -30,6 +30,8 @@ class RouteHelper
             'snipcart/abandoned/<cartId>' => 'snipcart/carts/detail',
             'snipcart/subscriptions' => 'snipcart/subscriptions/index',
             'snipcart/subscription/<subscriptionId>' => 'snipcart/subscriptions/detail',
+            'snipcart/activity' => 'snipcart/activity/index',
+            'snipcart/activity/<id>' => 'snipcart/activity/detail',
         ];
     }
 }

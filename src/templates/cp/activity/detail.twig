@@ -1,0 +1,36 @@
+{% extends '_layouts/cp' %}
+{% set title = 'Webhook Request Detail'|t('snipcart') %}
+
+{% set crumbs = [
+    { label: "Snipcart"|t('snipcart'), url: url('snipcart') },
+    { label: "Activity"|t('snipcart'), url: url('snipcart/activity') }
+] %}
+
+{% block content %}
+    <div style="margin-right: -2rem; max-width: 100%;">
+        <div class="meta" style="margin-left: -1.5rem; margin-top: -0.5rem;">
+            <div class="data">
+                <div class="heading">{{ 'Type'|t('snipcart') }}</div>
+                <div class="value code">{{ request.type }}</div>
+            </div>
+            {% if request.dateCreated %}
+                <div class="data">
+                    <div class="heading">{{ 'Date'|t('snipcart') }}</div>
+                    <div class="value">{{ date(request.dateCreated)|datetime }}</div>
+                </div>
+            {% endif %}
+            <div class="data">
+                <div class="heading">{{ 'Status'|t('snipcart') }}</div>
+                <div class="value">{{ request.mode }}</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h4>{{ 'Request'|t('snipcart') }}</h4>
+        <div class="code" style="overflow: auto; max-width: 100%; border: 1px solid rgba(51, 64, 77, 0.1); background-color: #f3f7fc; border-radius: 5px; padding: 24px;">
+            <pre>{{ request.body | json_decode | json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+        </div>
+
+    </div>
+{% endblock %}

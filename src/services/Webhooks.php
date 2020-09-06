@@ -478,6 +478,40 @@ class Webhooks extends \craft\base\Component
         return $this->nonResponse();
     }
 
+    /**
+     * Returns logged webhook requests.
+     *
+     * @param  int  $limit
+     * @param  int  $offset
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getWebhookRequests($limit = 20, $offset = 0): array
+    {
+        return WebhookLog::find()
+            ->limit($limit)
+            ->offset($offset * $limit)
+            ->orderBy(['dateCreated' => SORT_DESC])
+            ->where(['siteId' => Craft::$app->sites->currentSite->id])
+            ->all();
+    }
+
+    /**
+     * Returns logged webhook request.
+     *
+     * @param  int  $id
+     *
+     * @return \yii\db\ActiveRecord|null
+     */
+    public function getWebhookRequestById($id)
+    {
+        return WebhookLog::find()
+            ->where([
+                'id' => $id,
+                'siteId' => Craft::$app->sites->currentSite->id
+            ])
+            ->one();
+    }
 
     /**
      * Returns posted payload as an Order without letting unexpected root-level

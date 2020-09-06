@@ -1,0 +1,49 @@
+{% extends '_layouts/cp' %}
+{% set title = 'Activity'|t('snipcart') %}
+
+{% block content %}
+
+    <table id="activity" class="fullwidth data">
+        <thead>
+        <tr>
+            <th>{{ 'Request'|t('webhooks') }}</th>
+            <th>{{ 'Mode'|t('webhooks') }}</th>
+            <th>{{ 'Date'|t('webhooks') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for request in requests %}
+            <tr>
+                <th class="code">
+                    <a data-id="{{ request.id }}" href="{{ cpUrl('snipcart/activity/' ~ request.id) }}">
+                        {{- request.type -}}
+                    </a>
+                </th>
+                <td>{{ request.mode }}</td>
+                <td>{{ request.dateCreated ? date(request.dateCreated)|datetime('short') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% include "snipcart/cp/_parts/pagination" with {
+        prevLabel: 'Newer requests'|t('snipcart'),
+        nextLabel: 'Older requests'|t('snipcart'),
+        noResultsLabel: 'No requests logged'|t('snipcart'),
+        perPage: 20,
+        pageItems: requests | length,
+        currentPage: pageNumber,
+        totalPages: totalPages,
+        totalItems: totalItems,
+        itemLabel: 'request',
+        itemsLabel: 'requests',
+        path: 'snipcart/activity/'
+    } %}
+
+{% endblock %}
+
+{% block actionButton %}
+    {% if requests|length %}
+        <a class="btn" href="{{ actionUrl('snipcart/activity/clear') }}">{{ 'Clear'|t('snipcart') }}</a>
+    {% endif %}
+{% endblock %}

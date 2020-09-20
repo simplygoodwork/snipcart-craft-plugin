@@ -17,6 +17,11 @@ class WebhookTest extends \Codeception\Test\Unit
     {
     }
 
+    public function testUnknownPayloadAttributes($I)
+    {
+
+    }
+
     // tests
 //    public function testSomeFeature()
 //    {

@@ -134,6 +134,72 @@ class TestHelper
         ]);
     }
 
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public static function generateSubscription(): array
+    {
+        $customer = self::generateCustomer();
+
+        return [
+            'user' => [
+                'id' => StringHelper::UUID(),
+                'email' => $customer->email,
+                'creationDate' => date('c'),
+                'mode' => 'Test',
+                'gravatarUrl' => 'https://www.gravatar.com/avatar/b2b4677d71645916cbce0a893f7f6076?s=70&d=https%3a%2f%2fcdn.snipcart.com%2fassets%2fimages%2favatar.jpg',
+                'billingAddress' => [
+                    'fullName'   => $customer->billingAddressName,
+                    'firstName'  => $customer->billingAddressName,
+                    'name'       => $customer->billingAddressName,
+                    'company'    => 'Company Name',
+                    'address1'   => $customer->billingAddressAddress1,
+                    'address2'   => $customer->billingAddressAddress2,
+                    'city'       => $customer->billingAddressCity,
+                    'country'    => $customer->billingAddressCountry,
+                    'postalCode' => $customer->billingAddressPostalCode,
+                    'province'   => $customer->billingAddressProvince,
+                    'phone'      => $customer->billingAddressPhone,
+                    'vatNumber'  => null
+                ],
+                'shippingAddress' => [
+                    'fullName'   => $customer->billingAddressName,
+                    'firstName'  => $customer->billingAddressName,
+                    'name'       => $customer->billingAddressName,
+                    'company'    => 'Company Name',
+                    'address1'   => $customer->billingAddressAddress1,
+                    'address2'   => $customer->billingAddressAddress2,
+                    'city'       => $customer->billingAddressCity,
+                    'country'    => $customer->billingAddressCountry,
+                    'postalCode' => $customer->billingAddressPostalCode,
+                    'province'   => $customer->billingAddressProvince,
+                    'phone'      => $customer->billingAddressPhone,
+                    'vatNumber'  => null
+                ],
+                'initialOrderToken' => StringHelper::UUID(),
+                'schedule' => [
+                    'interval' => 'Day',
+                    'intervalCount' => 1,
+                    'trialPeriodInDays' => null,
+                    'startsOn' => date('c') // 2017-10-04T00:00:00Z
+                ],
+                'itemId' => StringHelper::UUID(),
+                'name' => 'Plan with new syntax',
+                'modificationDate' => date('c'),
+                'cancelledOn' => null,
+                'amount' => 30,
+                'quantity' => 1,
+                'userDefinedId' => 'PLAN_NEW_SYNTAX',
+                'totalSpent' => 30,
+                'status' => 'Paid',
+                'gatewayId' => null,
+                'metadata' => null,
+                'cartId' => null,
+            ]
+        ];
+    }
+
     public static function generateOrderItems($data = null): array
     {
         $items = [];

@@ -4,6 +4,3 @@ modules:
     - Asserts
     - \craft\test\Craft
     - \Helper\Acceptance
-    - REST:
-        url: http://snipcart-craft-plugin.test/
-        depends: PhpBrowser

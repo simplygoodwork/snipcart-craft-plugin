@@ -190,7 +190,7 @@ class WebhooksController extends Controller
         /**
          * Every Snipcart post should have a content property.
          */
-        if (! isset($payload->content)) {
+        if (! isset($payload->content) || empty($payload->content)) {
             return 'Request missing content.';
         }
 

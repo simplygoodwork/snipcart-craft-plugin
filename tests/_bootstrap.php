@@ -18,8 +18,6 @@ define('CRAFT_MIGRATIONS_PATH', __DIR__ . '/_craft/migrations');
 define('CRAFT_TRANSLATIONS_PATH', __DIR__ . '/_craft/translations');
 define('CRAFT_VENDOR_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor');
 
-$devMode = true;
-
 TestSetup::configureCraft();
 
 // Set the @webroot alias so that the cpresources folder is created in the correct directory

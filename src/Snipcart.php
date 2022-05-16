@@ -88,7 +88,7 @@ class Snipcart extends Plugin
     {
         parent::init();
         self::$plugin = $this;
-
+                
         $this->setComponents([
             'api'           => Api::class,
             'carts'         => Carts::class,
@@ -256,6 +256,19 @@ class Snipcart extends Plugin
 
             $pluginSettings->addProvider($instance->refHandle(), $instance);
         }
+    }
+    
+    
+
+    /**
+     * Logging method
+     */
+    static function log($message)
+    {
+        $file = Craft::getAlias('@storage/logs/craft-snipcart.log');
+        $log = date('Y-m-d H:i:s').' '.$message."\n";
+
+        \craft\helpers\FileHelper::writeToFile($file, $log, ['append' => true]);
     }
 
 }

@@ -44,10 +44,8 @@ class ModelHelper
      */
     public static function safePopulateModel(mixed $data, string $class)
     {
-       //\Craft::dd((object)$data);
-        $cleanData = self::stripUnknownProperties($data, $class);
-      
-        return new $class($cleanData);
+        $cleanData = json_encode(self::stripUnknownProperties($data, $class));
+        return new $class(json_decode($cleanData, true));
     }
 
     /**

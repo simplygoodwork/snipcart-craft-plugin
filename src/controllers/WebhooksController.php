@@ -62,7 +62,7 @@ class WebhooksController extends Controller
      * @inheritdoc
      * @var bool Disable CSRF for this controller
      */
-   // public bool $enableCsrfValidation = false;
+   public $enableCsrfValidation = false;
 
     /**
      * @inheritdoc

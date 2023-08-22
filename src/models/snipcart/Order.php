@@ -71,19 +71,19 @@ class Order extends \craft\base\Model
     public string $parentToken;
 
     /**
-     * @var \DateTime Date order was created. ("2018-12-05T18:37:19Z")
+     * @var ?\DateTime Date order was created. ("2018-12-05T18:37:19Z")
      */
-    public \DateTime $creationDate;
+    public ?\DateTime $creationDate;
 
     /**
-     * @var \DateTime Date order was last modified. ("2018-12-05T18:37:19Z")
+     * @var ?\DateTime Date order was last modified. ("2018-12-05T18:37:19Z")
      */
-    public \DateTime $modificationDate;
+    public ?\DateTime $modificationDate;
 
     /**
-     * @var \DateTime Date the order was completed.
+     * @var ?\DateTime Date the order was completed.
      */
-    public \DateTime $completionDate;
+    public ?\DateTime $completionDate;
 
     /**
      * @var string Order status.
